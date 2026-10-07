@@ -5,7 +5,12 @@ export const CourseStatusEnum = z.enum(['DRAFT', 'PUBLISHED', 'ARCHIVED']);
 
 export const CreateCourseSchema = z.object({
   title: z.string().min(3, 'Title must be at least 3 characters').max(150, 'Title cannot exceed 150 characters'),
-  slug: z.string().regex(/^[a-z0-9-]+$/, 'Slug must only contain lowercase alphanumeric characters and hyphens').optional(),
+  slug: z
+    .string()
+    .trim()
+    .regex(/^[a-z0-9-]+$/, 'Slug must only contain lowercase alphanumeric characters and hyphens')
+    .optional()
+    .or(z.literal('').transform(() => undefined)),
   description: z.string().min(10, 'Description must be at least 10 characters'),
   instructor: z.string().min(2, 'Instructor name is required'),
   instructorEmail: z.string().email('Invalid email address').optional().or(z.literal('')),

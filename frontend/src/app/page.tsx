@@ -225,7 +225,7 @@ export default function HomePage() {
           setFormModalOpen(false);
           setCourseToEdit(null);
         }}
-        courseToEdit={courseToEdit}
+      // courseToEdit={courseToEdit}
       />
 
       {/* Course Detail Drawer */}
