@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  ALL_LEVELS
+}
+
+enum CourseStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Course {
+  id              String       @id @default(uuid())
+  title           String
+  slug            String       @unique
+  description     String
+  instructor      String
+  instructorEmail String?
+  category        String
+  level           CourseLevel  @default(BEGINNER)
+  status          CourseStatus @default(DRAFT)
+  price           Float        @default(0.0)
+  discountPrice   Float?
+  durationHours   Float        @default(10.0)
+  lessonsCount    Int          @default(1)
+  thumbnail       String?
+  isFeatured      Boolean      @default(false)
+  rating          Float        @default(5.0)
+  ratingCount     Int          @default(0)
+  studentsCount   Int          @default(0)
+  tags            String[]     @default([])
+  requirements    String[]     @default([])
+  objectives      String[]     @default([])
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  @@index([category])
+  @@index([status])
+  @@index([level])
+}

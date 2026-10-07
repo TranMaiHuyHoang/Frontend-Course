@@ -1,0 +1,29 @@
+{
+  "name": "course-management-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fullstack Course Management System with Next.js, TanStack Query, Ant Design, Tailwind CSS, Express, and PostgreSQL",
+  "scripts": {
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "db:migrate": "cd backend && npx prisma db push && npm run prisma:seed",
+    "db:seed": "cd backend && npm run prisma:seed",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": [
+    "nextjs",
+    "tanstack-query",
+    "tailwind",
+    "antd",
+    "react-hook-form",
+    "nodejs",
+    "express",
+    "postgresql",
+    "prisma"
+  ],
+  "author": "",
+  "license": "ISC"
+}
