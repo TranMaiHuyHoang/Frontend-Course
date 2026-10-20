@@ -280,6 +280,10 @@ export const CourseForm: React.FC<CourseFormProps> = ({
                 />
 
                 {/* 3. Giảng viên */}
+                {/* value={formData} */}
+                {/* onChange={handleChange} */}
+                {/* error={errors} */}
+                {/* disabled={isEdit} */}
                 <InputInstructor
                     instructor={formData.instructor}
                     instructorEmail={formData.instructorEmail}

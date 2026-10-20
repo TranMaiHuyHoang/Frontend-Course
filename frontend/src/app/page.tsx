@@ -8,7 +8,7 @@ import { CourseStatsOverview } from '@/components/courses/CourseStatsOverview';
 import { CourseFilterBar } from '@/components/courses/CourseFilterBar';
 import { CourseTable } from '@/components/courses/CourseTable';
 import { CourseGrid } from '@/components/courses/CourseGrid';
-import { CourseForm } from '@/components/CourseFormModal';
+import { CodeFormVersion2 } from '@/components/CodeFormVersion2';
 import { CourseDetailDrawer } from '@/components/courses/CourseDetailDrawer';
 import { DeleteCourseModal } from '@/components/courses/DeleteCourseModal';
 import { useCourses } from '@/hooks/useCourses';
@@ -218,14 +218,13 @@ export default function HomePage() {
       {/* Footer */}
       <Footer />
 
-      {/* Course Create / Edit Form (Dùng chung CourseForm) */}
-      <CourseForm
+      {/* Course Create / Edit Form (Dùng CodeFormVersion2 hiển thị UI) */}
+      <CodeFormVersion2
         isOpen={formModalOpen}
         onClose={() => {
           setFormModalOpen(false);
           setCourseToEdit(null);
         }}
-      // courseToEdit={courseToEdit}
       />
 
       {/* Course Detail Drawer */}
