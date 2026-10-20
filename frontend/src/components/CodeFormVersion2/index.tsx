@@ -113,7 +113,10 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                     <InputSkill />
                 </Row>
 
-                <InputThumbnail />
+                <InputThumbnail
+                    value={formData.thumbnail}
+                    onChange={(value) => handleChangeForm('thumbnail', value)}
+                />
 
                 <div className="space-y-3">
                     <InputStatus />
