@@ -12,7 +12,12 @@ const CATEGORY_OPTIONS = [
     { label: 'Cybersecurity & Security', value: 'Cybersecurity' }
 ];
 
-const InputCategory = () => {
+interface InputCategoryProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+const InputCategory = ({ value, onChange }: InputCategoryProps) => {
     return (
         <Col xs={24} sm={10}>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
@@ -20,7 +25,8 @@ const InputCategory = () => {
             </label>
             <Select
                 placeholder="Chọn lĩnh vực khóa học"
-                defaultValue="Frontend"
+                value={value}
+                onChange={onChange}
                 options={CATEGORY_OPTIONS}
                 className="w-full"
                 showSearch

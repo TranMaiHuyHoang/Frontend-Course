@@ -1,10 +1,20 @@
 import { Switch } from 'antd'
 import React from 'react'
 
-const InputHighlight = () => {
+interface InputHighlightProps {
+    checked: boolean;
+    onChange: (checked: boolean) => void;
+}
+
+const InputHighlight = ({ checked, onChange }: InputHighlightProps) => {
     return (
         <div className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200/80">
-            <Switch defaultChecked={false} />
+            <Switch
+                checked={checked}
+                onChange={onChange}
+            />
+
+
             <div>
                 <span className="text-xs font-bold text-slate-800">
                     Highlight as Featured Course (Khóa học nổi bật)

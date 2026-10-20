@@ -101,15 +101,19 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                 <InputInforInstructor />
 
                 <Row gutter={16}>
-                    <InputLevel />
+                    <InputLevel
+                        value={formData.level}
+                        onChange={(value) => handleChangeForm('level', value)} />
                     <InputChargeType />
                 </Row>
 
                 <InputMetadata />
 
                 <Row gutter={16}>
-                    <InputCategory />
-
+                    <InputCategory
+                        value={formData.category}
+                        onChange={(value) => handleChangeForm('category', value)}
+                    />
                     <InputSkill />
                 </Row>
 
@@ -121,7 +125,10 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                 <div className="space-y-3">
                     <InputStatus />
 
-                    <InputHighlight />
+                    <InputHighlight
+                        checked={formData.isFeatured}
+                        onChange={(checked) => handleChangeForm('isFeatured', checked)}
+                    />
                 </div>
 
                 {/* 9. Buttons hành động (Footer) */}

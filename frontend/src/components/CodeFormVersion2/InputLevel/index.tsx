@@ -8,7 +8,11 @@ const LEVEL_OPTIONS = [
     { label: 'All Levels (Mọi cấp độ)', value: 'ALL_LEVELS' }
 ];
 
-const InputLevel = () => {
+interface InputLevelProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+const InputLevel = ({ value, onChange }: InputLevelProps) => {
     return (
 
         <Col xs={24} sm={12}>
@@ -17,7 +21,8 @@ const InputLevel = () => {
             </label>
             <Select
                 placeholder="Chọn trình độ phù hợp"
-                defaultValue="BEGINNER"
+                value={value}
+                onChange={onChange}
                 options={LEVEL_OPTIONS}
                 className="w-full"
             />
