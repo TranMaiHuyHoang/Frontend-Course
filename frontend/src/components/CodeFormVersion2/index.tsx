@@ -98,7 +98,11 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                     onChange={(value) => handleChangeForm('description', value)}
                 />
 
-                <InputInforInstructor />
+                <InputInforInstructor
+                    instructorName={formData.instructor}
+                    instructorEmail={formData.instructorEmail}
+                    onChange={handleChangeForm} />
+
 
                 <Row gutter={16}>
                     <InputLevel

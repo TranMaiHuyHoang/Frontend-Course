@@ -1,7 +1,13 @@
 import { Col, Input, Row } from 'antd'
 import React from 'react'
 
-const InputInforInstructor = () => {
+
+interface InputInforInstructorProps {
+    instructorName: string;
+    instructorEmail: string;
+    onChange: (key: 'instructor' | 'instructorEmail', value: string) => void;
+}
+const InputInforInstructor = ({ instructorName, instructorEmail, onChange }: InputInforInstructorProps) => {
     return (
         <Row gutter={16}>
             <Col xs={24} sm={12}>
@@ -9,6 +15,8 @@ const InputInforInstructor = () => {
                     Instructor Name (Tên giảng viên) <span className="text-red-500">*</span>
                 </label>
                 <Input
+                    value={instructorName}
+                    onChange={e => onChange('instructor', e.target.value)}
                     placeholder="e.g. Alex Rivera"
                 />
             </Col>
@@ -17,6 +25,8 @@ const InputInforInstructor = () => {
                     Instructor Email (Email liên hệ)
                 </label>
                 <Input
+                    value={instructorEmail}
+                    onChange={e => onChange('instructorEmail', e.target.value)}
                     placeholder="e.g. instructor@edupro.dev"
                 />
             </Col>
