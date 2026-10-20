@@ -1,7 +1,11 @@
 import { Col, Select } from 'antd'
 import React from 'react'
 
-const InputSkill = () => {
+interface InputSkillProps {
+    value: string[];
+    onChange: (value: string[]) => void;
+}
+const InputSkill = ({ value, onChange }: InputSkillProps) => {
     return (
         <Col xs={24} sm={14}>
             <label className="block text-xs font-semibold text-slate-700 mb-1">
@@ -10,7 +14,8 @@ const InputSkill = () => {
             <Select
                 mode="tags"
                 placeholder="e.g. React, TypeScript, Python"
-                defaultValue={['React', 'Next.js']}
+                value={value}
+                onChange={onChange}
                 className="w-full"
                 tokenSeparators={[',']}
             />

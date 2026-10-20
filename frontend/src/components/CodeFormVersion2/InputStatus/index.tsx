@@ -8,19 +8,25 @@ const STATUS_OPTIONS = [
     { label: 'Archived (Lưu trữ)', value: 'ARCHIVED' }
 ];
 
-const InputStatus = () => {
-  return (
-   <div>
-                        <label className="block text-xs font-semibold text-slate-700 mb-1">
-                            Publish Status (Trạng thái) <span className="text-red-500">*</span>
-                        </label>
-                        <Select
-                            defaultValue="DRAFT"
-                            options={STATUS_OPTIONS}
-                            className="w-full"
-                        />
-                    </div>
-  )
+interface InputStatusProps {
+    value: string;
+    onChange: (value: string) => void;
+}
+
+const InputStatus = ({ value, onChange }: InputStatusProps) => {
+    return (
+        <div>
+            <label className="block text-xs font-semibold text-slate-700 mb-1">
+                Publish Status (Trạng thái) <span className="text-red-500">*</span>
+            </label>
+            <Select
+                value={value}
+                onChange={onChange}
+                options={STATUS_OPTIONS}
+                className="w-full"
+            />
+        </div>
+    )
 }
 
 export default InputStatus

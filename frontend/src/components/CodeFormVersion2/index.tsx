@@ -114,7 +114,9 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                         value={formData.category}
                         onChange={(value) => handleChangeForm('category', value)}
                     />
-                    <InputSkill />
+                    <InputSkill
+                        value={formData.tags}
+                        onChange={(value) => handleChangeForm('tags', value)} />
                 </Row>
 
                 <InputThumbnail
@@ -123,7 +125,9 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                 />
 
                 <div className="space-y-3">
-                    <InputStatus />
+                    <InputStatus
+                        value={formData.status}
+                        onChange={(value) => handleChangeForm("status", value)} />
 
                     <InputHighlight
                         checked={formData.isFeatured}
