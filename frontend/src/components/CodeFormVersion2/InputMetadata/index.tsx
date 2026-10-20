@@ -1,7 +1,21 @@
 import { Col, InputNumber, Row } from 'antd'
 import React from 'react'
 
-const InputMetadata = () => {
+interface InputMetadataProps {
+    price: number;
+    discountPrice?: number | null;
+    durationHours: number;
+    lessonsCount: number;
+    onChange: (key: string, value: any) => void;
+}
+
+const InputMetadata = ({
+    price,
+    discountPrice,
+    durationHours,
+    lessonsCount,
+    onChange
+}: InputMetadataProps) => {
     return (
         <Row gutter={16}>
             <Col xs={12} sm={6}>
@@ -11,7 +25,8 @@ const InputMetadata = () => {
                 <InputNumber
                     min={0}
                     step={0.99}
-                    defaultValue={0}
+                    value={price}
+                    onChange={(val) => onChange('price', val ?? 0)}
                     className="w-full"
                     placeholder="0.00"
                 />
@@ -24,6 +39,8 @@ const InputMetadata = () => {
                 <InputNumber
                     min={0}
                     step={0.99}
+                    value={discountPrice ?? undefined}
+                    onChange={(val) => onChange('discountPrice', val)}
                     className="w-full"
                     placeholder="Optional"
                 />
@@ -36,7 +53,8 @@ const InputMetadata = () => {
                 <InputNumber
                     min={0.5}
                     step={0.5}
-                    defaultValue={10}
+                    value={durationHours}
+                    onChange={(val) => onChange('durationHours', val ?? 0)}
                     className="w-full"
                 />
             </Col>
@@ -47,7 +65,8 @@ const InputMetadata = () => {
                 </label>
                 <InputNumber
                     min={1}
-                    defaultValue={1}
+                    value={lessonsCount}
+                    onChange={(val) => onChange('lessonsCount', val ?? 1)}
                     className="w-full"
                 />
             </Col>

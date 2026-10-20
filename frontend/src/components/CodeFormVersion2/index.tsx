@@ -111,7 +111,13 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                     <InputChargeType />
                 </Row>
 
-                <InputMetadata />
+                <InputMetadata
+                    price={formData.price}
+                    discountPrice={formData.discountPrice}
+                    durationHours={formData.durationHours}
+                    lessonsCount={formData.lessonsCount}
+                    onChange={handleChangeForm}
+                />
 
                 <Row gutter={16}>
                     <InputCategory
