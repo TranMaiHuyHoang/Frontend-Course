@@ -14,10 +14,12 @@ import InputStatus from './InputStatus';
 import InputHighlight from './InputHighlight';
 import InputThumbnail from './InputThumbnail';
 import CourseTitle from './CourseTitle';
+import { toast } from 'sonner';
+import { useCreateCourse } from '@/hooks/useCourses';
 
 export interface CodeFormVersion2Props {
-    isOpen?: boolean;
-    onClose?: () => void;
+    isOpen: boolean;
+    onClose: () => void;
 }
 
 type CourseFormValues = {
@@ -65,15 +67,41 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
     isOpen = true,
     onClose
 }) => {
+    const createMutation = useCreateCourse();
     const [formData, setFormData] = useState<CourseFormValues>(DEFAULT_FORM_VALUES);
-
-    console.log('formData', formData);
 
     const handleChangeForm = (key: string, value: any) => {
         setFormData((prev) => ({
             ...prev,
             [key]: value
         }));
+    }
+
+    const validateForm = () => {
+        if (!formData.title) {
+            toast.warning('Please fill in all required fields Title');
+            return false;
+        }
+        if (formData.title.length < 3) {
+            toast.warning('Title must be at least 3 characters');
+            return false;
+        }
+
+        return true;
+    }
+
+    const handleSubmit = async () => {
+        if (!validateForm()) {
+            return;
+        }
+        console.log('formData', formData);
+        try {
+            await createMutation.mutateAsync({ ...formData });
+            setFormData(DEFAULT_FORM_VALUES);
+            onClose();
+        } catch (error) {
+            toast.error('Failed to create course');
+        }
     }
 
     return (
@@ -152,6 +180,7 @@ export const CodeFormVersion2: React.FC<CodeFormVersion2Props> = ({
                     </Button>
 
                     <Button
+                        onClick={handleSubmit}
                         type="primary"
                         htmlType="button"
                         className="bg-blue-600 hover:bg-blue-500 font-semibold px-6"

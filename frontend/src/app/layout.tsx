@@ -4,6 +4,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import QueryProvider from '@/providers/QueryProvider';
 import AntdProvider from '@/providers/AntdProvider';
 import { ClerkAuthProvider } from '@/providers/ClerkAuthProvider';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'Course Management System | EduHub Pro',
@@ -24,6 +25,7 @@ export default function RootLayout({
           <QueryProvider>
             <AntdProvider>
               <ClerkAuthProvider>{children}</ClerkAuthProvider>
+              <Toaster position="top-right" richColors />
             </AntdProvider>
           </QueryProvider>
         </body>
